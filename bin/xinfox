@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * 应用入口文件
+ * [XinFox System] Copyright (c) 2011 - 2021 XINFOX.CN
+ */
+declare(strict_types=1);
+
+namespace think;
+
+// 命令行入口文件
+// 加载基础文件
+require __DIR__ . '/../vendor/autoload.php';
+
+// 应用初始化
+$app = new App();
+$app->setNamespace('XinFox');
+$app->console->run();
