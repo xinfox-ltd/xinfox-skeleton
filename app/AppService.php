@@ -1,5 +1,10 @@
 <?php
-declare (strict_types = 1);
+/**
+ * 应用服务类
+ * [XinFox System] Copyright (c) 2011 - 2021 XINFOX.CN
+ */
+
+declare(strict_types=1);
 
 namespace XinFox;
 
@@ -12,11 +17,12 @@ class AppService extends Service
 {
     public function register()
     {
-        // 服务注册
     }
 
+    /**
+     */
     public function boot()
     {
-        // 服务启动
+
     }
 }

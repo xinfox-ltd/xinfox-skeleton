@@ -1,21 +1,40 @@
 {
-    "name": "xinfox/basic-app",
-    "description": "XinFox basic application",
-    "type": "project",
-    "authors": [
-        {
-            "name": "leige",
-            "email": "nicolaslei@163.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.2.0",
-        "ext-json": "*",
-        "topthink/framework": "^6.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "XinFox\\": "app"
-        }
+  "name": "xinfox/xinfox-skeleton",
+  "description": "XinFox basic application skeleton",
+  "type": "project",
+  "authors": [
+    {
+      "name": "令狐冲",
+      "email": "nicolaslei@163.com"
     }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^7.4",
+    "ext-json": "*",
+    "topthink/framework": "^6.0",
+    "xinfox/think-annotation": "dev-main",
+    "xinfox/jwt-auth": "dev-main"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../think-annotation",
+      "options": {
+        "symlink": false
+      }
+    },
+    {
+      "type": "path",
+      "url": "../xinfox-auth",
+      "options": {
+        "symlink": false
+      }
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "XinFox\\": "app"
+    }
+  }
 }

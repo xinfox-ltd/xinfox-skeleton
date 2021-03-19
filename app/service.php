@@ -1,9 +1,16 @@
 <?php
+/**
+ * 系统服务定义文件
+ * [XinFox System] Copyright (c) 2011 - 2021 XINFOX.CN
+ */
+
+declare(strict_types=1);
 
 use XinFox\AppService;
 
-// 系统服务定义文件
 // 服务在完成全局初始化之后执行
 return [
-    AppService::class,
+    //AppService::class,
+    \XinFox\Annotation\Service::class,
+    \XinFox\Auth\Middleware\ThinkPHP\Service::class
 ];

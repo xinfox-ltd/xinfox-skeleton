@@ -1,4 +1,11 @@
 <?php
+/**
+ * 全局中间件定义文件
+ * [XinFox System] Copyright (c) 2011 - 2021 XINFOX.CN
+ */
+
+declare(strict_types=1);
+
 namespace XinFox;
 
 use think\db\exception\DataNotFoundException;
@@ -9,6 +16,8 @@ use think\exception\HttpResponseException;
 use think\exception\ValidateException;
 use think\Response;
 use Throwable;
+use XinFox\Auth\Exception\ForbiddenException;
+use XinFox\Auth\Exception\UnauthorizedException;
 
 /**
  * 应用异常处理类
@@ -50,8 +59,18 @@ class ExceptionHandle extends Handle
      */
     public function render($request, Throwable $e): Response
     {
-        // 添加自定义异常处理机制
-return json(['message' => $e->getMessage()]);
+        if ($e instanceof UnauthorizedException) {
+            return error401_response();
+        }
+
+        if ($e instanceof ForbiddenException) {
+            return error403_response();
+        }
+
+        if ($e instanceof HttpException) {
+            return error404_response('访问的URL不存在，请注意HTTP请求类型是否正确');
+        }
+
         // 其他错误交给系统处理
         return parent::render($request, $e);
     }

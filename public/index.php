@@ -1,5 +1,4 @@
 <?php
-
 /**
  * 应用入口文件
  * [XinFox System] Copyright (c) 2011 - 2021 XINFOX.CN
@@ -11,8 +10,9 @@ use think\App;
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new App();
-$app->setNamespace('XinFox');
-$http = $app->http;
+$http = $app->debug()->setNamespace('XinFox')->http;
+
 $response = $http->run();
 $response->send();
+
 $http->end($response);
