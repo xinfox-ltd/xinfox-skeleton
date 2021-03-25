@@ -57,7 +57,7 @@ if (!function_exists('error404_response')) {
 }
 
 if (!function_exists('success_response')) {
-    function success_response($data, string $message = 'success', int $code = 200): Json
+    function success_response($data = null, string $message = 'success', int $code = 0): Json
     {
         return json_response($data, $message, $code);
     }

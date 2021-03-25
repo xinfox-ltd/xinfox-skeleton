@@ -71,6 +71,10 @@ class ExceptionHandle extends Handle
             return error404_response('访问的URL不存在，请注意HTTP请求类型是否正确');
         }
 
+        if ($e instanceof ValidateException) {
+            return error_response($e->getMessage());
+        }
+
         // 其他错误交给系统处理
         return parent::render($request, $e);
     }

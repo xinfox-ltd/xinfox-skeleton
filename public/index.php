@@ -9,6 +9,7 @@ use think\App;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+
 $app = new App();
 $http = $app->debug()->setNamespace('XinFox')->http;
 

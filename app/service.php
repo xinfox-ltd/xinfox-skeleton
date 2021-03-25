@@ -10,7 +10,7 @@ use XinFox\AppService;
 
 // 服务在完成全局初始化之后执行
 return [
-    //AppService::class,
+    AppService::class,
     \XinFox\Annotation\Service::class,
     \XinFox\Auth\Middleware\ThinkPHP\Service::class
 ];
