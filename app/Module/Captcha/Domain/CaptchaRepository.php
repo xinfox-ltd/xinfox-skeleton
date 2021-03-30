@@ -11,5 +11,7 @@ interface CaptchaRepository
 {
     public function has($captchaId): bool;
 
-    public function get($captchaId);
+    public function get($captchaId): ?Captcha;
+
+    public function save(Captcha $captcha, int $ttl);
 }

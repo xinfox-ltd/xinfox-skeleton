@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace XinFox;
 
 use think\App;
+use think\Cache;
 use think\Request;
 use XinFox\Auth\Auth;
 use XinFox\Auth\VisitorInterface;
@@ -27,12 +28,18 @@ abstract class BaseController
      */
     protected VisitorInterface $visitor;
 
+    /**
+     * @var Cache
+     */
+    protected Cache $cache;
+
     public function __construct(App $app)
     {
         $this->app = $app;
         $this->request = $app->request;
         $this->auth = $app->get(Auth::class);
         $this->visitor = $app->get(VisitorInterface::class);
+        $this->cache = $app->cache;
 
         // 控制器初始化
         $this->initialize();

@@ -5,9 +5,9 @@
  */
 declare(strict_types=1);
 
-namespace XinFox\Module\Captcha\Sms\Scene;
+namespace XinFox\Module\Captcha\Infrastructure\Sms\Scene;
 
-use XinFox\Module\Captcha\Sms\SceneInterface;
+use XinFox\Module\Captcha\Infrastructure\Sms\SceneInterface;
 use XinFox\Sms\Contracts\GatewayInterface;
 
 class UserRegisterScene implements SceneInterface

@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace XinFox\Module\Captcha;
+namespace XinFox\Module\Captcha\Domain;
 
 class Captcha
 {

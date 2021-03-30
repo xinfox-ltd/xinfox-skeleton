@@ -13,7 +13,7 @@ use XinFox\Module\User\Domain\User;
 use XinFox\Module\User\Domain\UserRepository;
 use XinFox\Module\User\Domain\WechatMiniProgramSessionRepository;
 
-class UserBindWechatMiniProgram
+class UserBindWechatMiniProgramService
 {
     private UserRepository $useRepository;
 

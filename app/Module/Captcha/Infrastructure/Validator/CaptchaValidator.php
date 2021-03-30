@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace XinFox\Module\Captcha\Validator;
+namespace XinFox\Module\Captcha\Infrastructure\Validator;
 
 use think\Validate;
 

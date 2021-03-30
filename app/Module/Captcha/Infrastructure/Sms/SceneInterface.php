@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace XinFox\Module\Captcha\Sms;
+namespace XinFox\Module\Captcha\Infrastructure\Sms;
 
 use XinFox\Sms\Contracts\MessageInterface;
 

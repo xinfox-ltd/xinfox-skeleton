@@ -9,7 +9,7 @@ namespace XinFox\Module\Captcha\Application;
 
 use XinFox\Module\Captcha\Domain\CaptchaRepository;
 
-class CaptchaVerify
+class CaptchaVerifyService
 {
     private CaptchaRepository $captchaRepository;
 
@@ -20,6 +20,7 @@ class CaptchaVerify
 
     public function exec($captchaId, $code): bool
     {
-        return $this->captchaRepository->has($captchaId) && $this->captchaRepository->get($captchaId) == $code;
+        return $this->captchaRepository->has($captchaId)
+            && $this->captchaRepository->get($captchaId)->getCode() == $code;
     }
 }

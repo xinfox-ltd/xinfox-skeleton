@@ -11,12 +11,14 @@ use Psr\SimpleCache\InvalidArgumentException;
 use think\response\Json;
 use XinFox\Annotation\Route;
 use XinFox\BaseController;
-use XinFox\Module\Captcha\Application\CaptchaVerify;
-use XinFox\Module\Captcha\Generator\ImageCaptchaGenerator;
-use XinFox\Module\Captcha\Generator\SmsCaptchaGenerator;
-use XinFox\Module\Captcha\Sms\Scene\UserRegisterScene;
-use XinFox\Module\Captcha\Validator\CaptchaValidator;
-use XinFox\Module\Captcha\Validator\CaptchaVerifyValidator;
+use XinFox\Module\Captcha\Application\CaptchaVerifyService;
+use XinFox\Module\Captcha\Application\CreateCaptchaService;
+use XinFox\Module\Captcha\Infrastructure\Generator\ImageCaptchaGenerator;
+use XinFox\Module\Captcha\Infrastructure\Generator\SmsCaptchaGenerator;
+use XinFox\Module\Captcha\Infrastructure\Persistence\ThinkPHP\CaptchaRepository;
+use XinFox\Module\Captcha\Infrastructure\Sms\Scene\UserRegisterScene;
+use XinFox\Module\Captcha\Infrastructure\Validator\CaptchaValidator;
+use XinFox\Module\Captcha\Infrastructure\Validator\CaptchaVerifyValidator;
 use XinFox\Sms\XinFoxSms;
 
 /**
@@ -28,7 +30,7 @@ class CaptchaController extends BaseController
 {
     /**
      * 创建验证码
-     * @Route("/captcha", method="POST")
+     * @Route("/v1/captcha", method="POST")
      */
     public function create(): Json
     {
@@ -59,18 +61,19 @@ class CaptchaController extends BaseController
                         return error_response('暂不支持 scene [' . $data['scene']);
                 }
 
-                $generator = new SmsCaptchaGenerator($this->app->cache, $this->app->get(XinFoxSms::class), $scene);
+                $drive = new SmsCaptchaGenerator($this->app->get(XinFoxSms::class), $scene);
                 break;
             case "image":
-                $generator = new ImageCaptchaGenerator($this->app->cache);
+                $drive = new ImageCaptchaGenerator();
                 break;
             default:
                 return error_response('暂不支持 type [' . $data['type']);
         }
 
         try {
+            $captchaService = new CreateCaptchaService(new CaptchaRepository($this->cache), $drive);
             // 创建验证码
-            $captcha = $generator->create();
+            $captcha = $captchaService->exec(600);
             $returnData = [
                 'id' => $captcha->getId(),
                 'type' => $captcha->getType(),
@@ -97,7 +100,9 @@ class CaptchaController extends BaseController
         $data = $this->request->post();
         validate(CaptchaVerifyValidator::class)->check($data);
 
-        $captchaVerify = new CaptchaVerify();
+        $captchaVerify = new CaptchaVerifyService(
+            new CaptchaRepository($this->cache)
+        );
         if (!$captchaVerify->exec($data['id'], $data['code'])) {
             return error_response('验证码错误');
         }
