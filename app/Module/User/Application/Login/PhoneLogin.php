@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 namespace XinFox\Module\User\Application\Login;
 
-use XinFox\Module\User\Application\Exception\AccountNotExistException;
-use XinFox\Module\User\Application\Exception\AccountOffException;
+use XinFox\Module\User\Infrastructure\Exception\AccountNotExistException;
+use XinFox\Module\User\Infrastructure\Exception\AccountOffException;
 use XinFox\Module\User\Domain\User;
 use XinFox\Module\User\Domain\UserRepository;
 

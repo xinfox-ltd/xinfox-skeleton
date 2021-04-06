@@ -5,9 +5,10 @@
  */
 declare(strict_types=1);
 
-namespace XinFox\Module\User\Application\Exception;
+namespace XinFox\Module\User\Infrastructure\Exception;
 
-class PasswdErrorException extends \Exception
+
+class NotExistException extends \Exception
 {
 
 }

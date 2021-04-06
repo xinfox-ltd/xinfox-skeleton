@@ -15,7 +15,7 @@ use XinFox\Annotation\Route;
 use XinFox\Auth\Auth;
 use XinFox\Auth\VisitorInterface;
 use XinFox\BaseController;
-use XinFox\User;
+use XinFox\Model\User;
 
 
 /**

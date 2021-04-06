@@ -17,7 +17,7 @@ return [
         ]
     ],
     'providers' => [
-        'user' => \XinFox\Provider\Component\Auth\UserProvider::class,
-        'token' => \XinFox\Provider\Component\Auth\TokenProvider::class
+        'user' => \XinFox\Module\Auth\Infrastructure\UserProvider::class,
+        'token' => \XinFox\Module\Auth\Infrastructure\TokenProvider::class
     ]
 ];

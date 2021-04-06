@@ -6,10 +6,13 @@
 
 declare(strict_types=1);
 
-namespace XinFox\Provider\Component\Auth;
+namespace XinFox\Module\Auth\Infrastructure;
 
 use XinFox\Auth\Token;
 use XinFox\Auth\TokenProviderInterface;
+use XinFox\Module\Auth\Application\CreateTokenRequest;
+use XinFox\Module\Auth\Application\CreateTokenService;
+use XinFox\Module\Auth\Infrastructure\Persistence\ThinkPHP\TokenRepository;
 
 class TokenProvider implements TokenProviderInterface
 {
@@ -20,7 +23,11 @@ class TokenProvider implements TokenProviderInterface
 
     public function save(Token $token)
     {
-        // TODO: Implement save() method.
+        $request = new CreateTokenRequest($token->getJti(), 1);
+        $service = new CreateTokenService(
+            new TokenRepository()
+        );
+        $service->exec($request);
     }
 
     public function valid(string $tokenIdentify): bool

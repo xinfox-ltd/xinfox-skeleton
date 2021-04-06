@@ -7,13 +7,13 @@ declare(strict_types=1);
 
 namespace XinFox\Module\User\Application;
 
-use XinFox\Module\User\Application\Exception\AccountNotExistException;
-use XinFox\Module\User\Application\Exception\NotExistException;
+use XinFox\Module\User\Infrastructure\Exception\AccountNotExistException;
+use XinFox\Module\User\Infrastructure\Exception\NotExistException;
 use XinFox\Module\User\Domain\User;
 use XinFox\Module\User\Domain\UserRepository;
 use XinFox\Module\User\Domain\WechatMiniProgramSessionRepository;
 
-class UserBindWechatMiniProgramService
+class BindWechatMiniProgramService
 {
     private UserRepository $useRepository;
 

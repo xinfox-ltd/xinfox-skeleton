@@ -30,7 +30,6 @@ class TokensController extends BaseController
     {
         $data = $this->request->post();
         validate(LoginValidator::class)->check($data);
-
         switch ($data['mode']) {
             //账号密码登录
             case 'account':

@@ -6,16 +6,16 @@
 
 declare(strict_types=1);
 
-namespace XinFox\Provider\Component\Auth;
+namespace XinFox\Module\Auth\Infrastructure;
 
-use XinFox\User;
 use XinFox\Auth\UserProviderInterface;
 use XinFox\Auth\VisitorInterface;
+use XinFox\Model\User;
 
 class UserProvider implements UserProviderInterface
 {
     public function loginById($uid): VisitorInterface
     {
-        return new User();
+
     }
 }

@@ -11,5 +11,10 @@ use think\Validate;
 
 class LoginValidator extends Validate
 {
+    protected $rule = [
+        'mode' => 'require',
+    ];
 
+    protected $message = [
+    ];
 }

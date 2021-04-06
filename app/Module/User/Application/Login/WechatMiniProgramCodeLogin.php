@@ -8,8 +8,8 @@ declare(strict_types=1);
 namespace XinFox\Module\User\Application\Login;
 
 use GuzzleHttp\Exception\GuzzleException;
-use XinFox\Module\User\Application\Exception\AccountOffException;
-use XinFox\Module\User\Application\Exception\NotBindException;
+use XinFox\Module\User\Infrastructure\Exception\AccountOffException;
+use XinFox\Module\User\Infrastructure\Exception\NotBindException;
 use XinFox\Module\User\Domain\WechatMiniProgramSession;
 use XinFox\Module\User\Domain\User;
 use XinFox\Module\User\Domain\UserRepository;
