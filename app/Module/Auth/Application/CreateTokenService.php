@@ -19,7 +19,7 @@ class CreateTokenService
         $this->tokenRepository = $tokenRepository;
     }
 
-    public function exec(CreateTokenRequest $createTokenRequest)
+    public function exec(CreateTokenRequest $createTokenRequest): Token
     {
         $token = $this->tokenRepository->findFirstByUserId($createTokenRequest->getUserId());
         if ($token) {

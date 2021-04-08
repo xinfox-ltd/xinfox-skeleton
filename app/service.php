@@ -12,5 +12,5 @@ use XinFox\AppService;
 return [
     AppService::class,
     \XinFox\Annotation\Service::class,
-    \XinFox\Auth\Middleware\ThinkPHP\Service::class
+    \XinFox\ThinkPHP\Auth\Service::class
 ];

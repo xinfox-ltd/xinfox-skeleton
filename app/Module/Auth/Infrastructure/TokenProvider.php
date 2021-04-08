@@ -16,7 +16,7 @@ use XinFox\Module\Auth\Infrastructure\Persistence\ThinkPHP\TokenRepository;
 
 class TokenProvider implements TokenProviderInterface
 {
-    public function delete($tokenId): void
+    public function delete($tokenIdentify): void
     {
         // TODO: Implement delete() method.
     }

@@ -10,7 +10,7 @@ return [
         'controllers' => [],
         'auth' => [
             'enable' => true,
-            'middleware' => \XinFox\Auth\Middleware\ThinkPHP\Middleware::class
+            'middleware' => \XinFox\Annotation\Annotator\Middleware::class
         ]
     ],
     'model'  => [

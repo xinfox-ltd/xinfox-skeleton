@@ -11,5 +11,5 @@ interface TokenRepository
 {
     public function save(Token $token);
 
-    public function findFirstByUserId(int $userId): Token;
+    public function findFirstByUserId(int $userId): ?Token;
 }

@@ -22,8 +22,12 @@ class TokenRepository implements \XinFox\Module\Auth\Domain\TokenRepository
         );
     }
 
-    public function findFirstByUserId(int $userId): Token
+    public function findFirstByUserId(int $userId): ?Token
     {
-        // TODO: Implement findFirstByUserId() method.
+        $token = \XinFox\Model\Token::where("user_id", $userId)->find();
+        if ($token) {
+            return new Token($token->token_id, $token->user_id);
+        }
+        return null;
     }
 }

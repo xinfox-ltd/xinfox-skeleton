@@ -144,7 +144,7 @@ class User implements VisitorInterface
         return $this->role;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
