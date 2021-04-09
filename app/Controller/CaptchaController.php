@@ -93,7 +93,7 @@ class CaptchaController extends BaseController
 
     /**
      * 验证码校验
-     * @Route("/captcha/verify", method="POST")
+     * @Route("/v1/captcha/verify", method="POST")
      */
     public function verify(): Json
     {

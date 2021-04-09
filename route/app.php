@@ -8,6 +8,4 @@ declare(strict_types=1);
 
 use think\facade\Route;
 
-Route::post('/captcha/verify', 'Captcha/verify');
-Route::post('/v1/users/:userId/status', 'Users/updateStatus');
 
